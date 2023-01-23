@@ -13,7 +13,7 @@ Ok to proceed? (y)
 Creating a new Next.js app in /home/cskim/git-repo/AWS-App-dev/dabit-amplify-next.
 
 $ yarn add aws-amplify @aws-amplify/ui-react@1.2.25 react-simplemde-editor@4.1.5 react-markdown uuid
-$ yarn add tailwindcss@latest postcss@latest autoprefixer@latest @tailwindcss/typography
+$ yarn add -D tailwindcss postcss autoprefixer @tailwindcss/typography
 
 $ npx tailwindcss init -p
 
@@ -61,11 +61,19 @@ $ amplify add api
 Edit your schema at /home/cskim/git-repo/AWS-App-dev/dabit-amplify-next/amplify/backend/api/NextBlog/schema.graphql or place .graphql files in a directory at /home/cskim/git-repo/AWS-App-dev/dabit-amplify-next/amplify/backend/api/NextBlog/schema
 ✔ Do you want to edit the schema now? (Y/n) · yes
 Edit the file in your editor: /home/cskim/git-repo/AWS-App-dev/dabit-amplify-next/amplify/backend/api/NextBlog/schema.graphql
+<b>
+type Post @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  title: String!
+  content: String!
+}
+</b>
 ✅ Successfully added resource NextBlog locally
 
 $ amplify push
 ...
-⠇ Building resource api/NextBlog✅ GraphQL schema compiled successfully.
+⠇ Building resource api/NextBlog
+✅ GraphQL schema compiled successfully.
 
 Edit your schema at /home/cskim/git-repo/AWS-App-dev/dabit-amplify-next/amplify/backend/api/NextBlog/schema.graphql or place .graphql files in a directory at /home/cskim/git-repo/AWS-App-dev/dabit-amplify-next/amplify/backend/api/NextBlog/schema
 ✔ Successfully pulled backend environment dev from the cloud.
@@ -107,7 +115,16 @@ mutation MyMutation {
     content
   }
 }
-
+====
+{
+  "data": {
+    "createPost": {
+      "id": "6541ad8b-40d1-4ac7-8adb-8035c8c9cd40",
+      "title": "My first post",
+      "content": "Hello world!"
+    }
+  }
+}
 </pre>
 
 <pre>

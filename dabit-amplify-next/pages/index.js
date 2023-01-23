@@ -16,10 +16,12 @@ export default function Home() {
   }
   return (
     <div>
-      <h1 className='text-3xl font-semibold tracking-wide mt-6 mb-2'>Posts</h1>
+      <h1 className='text-3xl font-semibold tracking-wide mt-6 mb-2 ml-6'>
+        Posts
+      </h1>
       {posts.map((post, index) => (
         <Link key={index} href={`/posts/${post.id}`}>
-          <div className='cursor-pointer border-b border-gray-300	mt-8 pb-4'>
+          <div className='cursor-pointer border-b border-gray-300	mt-8 ml-4 pb-4'>
             <h2 className='text-xl font-semibold'>{post.title}</h2>
           </div>
         </Link>
