@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-dabitamplifynextauth-dev-211957-authRole",
+      "UnauthRoleArn": "arn:aws:iam::662053100371:role/amplify-dabitamplifynextauth-dev-211957-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::662053100371:role/amplify-dabitamplifynextauth-dev-211957-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-dabitamplifynextauth-dev-211957-deployment",
+      "UnauthRoleName": "amplify-dabitamplifynextauth-dev-211957-unauthRole",
+      "StackName": "amplify-dabitamplifynextauth-dev-211957",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:662053100371:stack/amplify-dabitamplifynextauth-dev-211957/408a01a0-9b18-11ed-862d-0a144aa9446e",
+      "AmplifyAppId": "du1d71t6g3w9j"
+    },
+    "categories": {
+      "auth": {
+        "dabitamplifynextauth8c270c56": {}
+      }
+    }
+  }
+}
