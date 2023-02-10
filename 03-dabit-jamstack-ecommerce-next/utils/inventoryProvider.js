@@ -1,4 +1,4 @@
-import inventory from './inventory'
+import inventory from './inventory-my'
 
 /*
 Inventory items should adhere to the following schema:
@@ -20,6 +20,4 @@ async function fetchInventory() {
   return Promise.resolve(inventory)
 }
 
-export {
-  fetchInventory, inventory as staticInventory
-}
+export { fetchInventory, inventory as staticInventory }
