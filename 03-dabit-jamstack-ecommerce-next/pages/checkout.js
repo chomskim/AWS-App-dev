@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import { SiteContext, ContextProviderComponent } from '../context/mainContext'
-import DENOMINATION from '../utils/currencyProvider'
+// import DENOMINATION from '../utils/currencyProvider'
+import { formatPrice } from '../utils/helpers'
 import { FaLongArrowAltLeft } from 'react-icons/fa'
 import Link from 'next/link'
 import Image from '../components/Image'
@@ -36,7 +37,8 @@ const Input = ({ onChange, value, name, placeholder }) => (
   <input
     onChange={onChange}
     value={value}
-    className='mt-2 text-sm shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+    className='mt-2 text-sm shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 
+    leading-tight focus:outline-none focus:shadow-outline'
     type='text'
     placeholder={placeholder}
     name={name}
@@ -158,7 +160,7 @@ const Checkout = ({ context }) => {
                       <Image className='w-32 m-0' src={item.image} alt={item.name} />
                       <p className='m-0 pl-10 text-gray-600'>{item.name}</p>
                       <div className='flex flex-1 justify-end'>
-                        <p className='m-0 pl-10 text-gray-900 font-semibold'>{DENOMINATION + item.price}</p>
+                        <p className='m-0 pl-10 text-gray-900 font-semibold'>{formatPrice(item.price)}</p>
                       </div>
                     </div>
                   </div>
@@ -171,7 +173,10 @@ const Checkout = ({ context }) => {
                   <form onSubmit={handleSubmit}>
                     {errorMessage ? <span>{errorMessage}</span> : ''}
                     <Input onChange={onChange} value={input.name} name='name' placeholder='Cardholder name' />
-                    <CardElement className='mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' />
+                    <CardElement
+                      className='mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 
+                    leading-tight focus:outline-none focus:shadow-outline'
+                    />
                     <Input onChange={onChange} value={input.email} name='email' placeholder='Email' />
                     <Input onChange={onChange} value={input.street} name='street' placeholder='Street' />
                     <Input onChange={onChange} value={input.city} name='city' placeholder='City' />
@@ -181,7 +186,8 @@ const Checkout = ({ context }) => {
                       type='submit'
                       disabled={!stripe}
                       onClick={handleSubmit}
-                      className='hidden md:block bg-primary hover:bg-black text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline'
+                      className='hidden md:block bg-primary hover:bg-black text-white font-bold py-2 px-4 mt-4 
+                      rounded focus:outline-none focus:shadow-outline'
                     >
                       Confirm order
                     </button>
@@ -191,7 +197,7 @@ const Checkout = ({ context }) => {
               <div className='md:pt-20'>
                 <div className='pl-4 flex flex-1 pt-2 md:pt-8 mt-2 sm:mt-0'>
                   <p className='text-sm pr-10 text-left'>Subtotal</p>
-                  <p className='w-38 flex text-right justify-end'>{DENOMINATION + total}</p>
+                  <p className='w-38 flex text-right justify-end'>{formatPrice(total)}</p>
                 </div>
                 <div className='pl-4 flex flex-1 my-2'>
                   <p className='text-sm pr-10'>Shipping</p>
@@ -199,7 +205,7 @@ const Checkout = ({ context }) => {
                 </div>
                 <div className='md:ml-4 pl-2 flex flex-1 bg-gray-200 pr-4 pb-1 pt-2 mt-2'>
                   <p className='text-sm pr-10'>Total</p>
-                  <p className='font-semibold w-38 flex justify-end'>{DENOMINATION + (total + calculateShipping())}</p>
+                  <p className='font-semibold w-38 flex justify-end'>{formatPrice(total + calculateShipping())}</p>
                 </div>
                 <button
                   type='submit'

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchInventory } from '../utils/inventoryProvider'
-import DENOMINATION from '../utils/currencyProvider'
+// import DENOMINATION from '../utils/currencyProvider'
+import { formatPrice } from '../utils/helpers'
 import Image from '../components/Image'
 import Link from 'next/link'
 import { slugify } from '../utils/helpers'
@@ -105,7 +106,7 @@ const ViewInventory = (props) => {
               </Link>
               <div className='flex flex-1 justify-end'>
                 <p className='m-0 pl-10 text-gray-900 text-sm'>In stock: {item.currentInventory}</p>
-                <p className='m-0 pl-20 text-gray-900 font-semibold'>{DENOMINATION + item.price}</p>
+                <p className='m-0 pl-20 text-gray-900 font-semibold'>{formatPrice(item.price)}</p>
               </div>
               <div className='flex items-center m-0 ml-10 text-gray-900 text-s cursor-pointer'>
                 <FaTimes onClick={() => deleteItem(index)} />
