@@ -1,6 +1,0 @@
-/__pypackages__
-/.mypy_cache
-.pdm.toml
-.pytest_cache
-.venv
-*.pyc
